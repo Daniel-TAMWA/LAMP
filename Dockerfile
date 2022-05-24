@@ -35,17 +35,14 @@ RUN apt-get install ${APT_FLAGS} \
     rm -f ${DOCUMENTROOT}/index.html && \
     apt-get autoclean -y
 
-COPY app ${DOCUMENTROOT}
-# --------------- FIN COUCHE PHP --------------------
-
-
-# OUVERTURE DU PORT HTTP
-EXPOSE 80
-
-
 # RÉPERTOIRE DE TRAVAIL
 WORKDIR  ${DOCUMENTROOT}
 
+COPY app ${DOCUMENTROOT}
+# --------------- FIN COUCHE PHP --------------------
+
+# OUVERTURE DU PORT HTTP
+EXPOSE 80
 
 # DÉMARRAGE DES SERVICES LORS DE L'EXÉCUTION DE L'IMAGE
 ENTRYPOINT service mysql start && mysql < /articles.sql && apache2ctl -D FOREGROUND
