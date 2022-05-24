@@ -35,7 +35,8 @@ RUN apt-get install ${APT_FLAGS} \
     rm -f ${DOCUMENTROOT}/index.html && \
     apt-get autoclean -y
 
-COPY app ${DOCUMENTROOT}
+COPY db-config.php ${DOCUMENTROOT}
+COPY index.php ${DOCUMENTROOT}
 # --------------- FIN COUCHE PHP --------------------
 
 # RÉPERTOIRE DE TRAVAIL
