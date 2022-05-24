@@ -35,11 +35,11 @@ RUN apt-get install ${APT_FLAGS} \
     rm -f ${DOCUMENTROOT}/index.html && \
     apt-get autoclean -y
 
-# RÉPERTOIRE DE TRAVAIL
-WORKDIR  ${DOCUMENTROOT}
-
 COPY app ${DOCUMENTROOT}
 # --------------- FIN COUCHE PHP --------------------
+
+# RÉPERTOIRE DE TRAVAIL
+WORKDIR  ${DOCUMENTROOT}
 
 # OUVERTURE DU PORT HTTP
 EXPOSE 80
